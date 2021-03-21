@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="EncriptarContraseña">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pass" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EncriptarContraseñaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EncriptarContraseñaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultarUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Pass" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultarUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultarUsuarioResult" type="tns:UsuariosAplic" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UsuariosAplic">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="param" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cedula" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UsuarioJDE" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CodigoJDE" type="s:float" />
+          <s:element minOccurs="0" maxOccurs="1" name="Codigo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Apellidos" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Area" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Estado" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="EsPrimeraClave" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ParametrosOffice365">
+        <s:complexType />
+      </s:element>
+      <s:element name="ParametrosOffice365Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ParametrosOffice365Result" type="tns:Office365" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Office365">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="userOffice365" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="passOffice365" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="serverMail" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="portMail" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="enableSslMail" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="autentIntegrada" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ListarUsuarios">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="User_Cliente_WebService" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Key_Cliente_WebService" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListarUsuariosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListarUsuariosResult" type="tns:ArrayOfUsuariosAplic" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUsuariosAplic">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UsuariosAplic" nillable="true" type="tns:UsuariosAplic" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="EncriptarContraseñaSoapIn">
+    <wsdl:part name="parameters" element="tns:EncriptarContraseña" />
+  </wsdl:message>
+  <wsdl:message name="EncriptarContraseñaSoapOut">
+    <wsdl:part name="parameters" element="tns:EncriptarContraseñaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultarUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="ConsultarUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ParametrosOffice365SoapIn">
+    <wsdl:part name="parameters" element="tns:ParametrosOffice365" />
+  </wsdl:message>
+  <wsdl:message name="ParametrosOffice365SoapOut">
+    <wsdl:part name="parameters" element="tns:ParametrosOffice365Response" />
+  </wsdl:message>
+  <wsdl:message name="ListarUsuariosSoapIn">
+    <wsdl:part name="parameters" element="tns:ListarUsuarios" />
+  </wsdl:message>
+  <wsdl:message name="ListarUsuariosSoapOut">
+    <wsdl:part name="parameters" element="tns:ListarUsuariosResponse" />
+  </wsdl:message>
+  <wsdl:portType name="User_WebServiceSoap">
+    <wsdl:operation name="EncriptarContraseña">
+      <wsdl:input message="tns:EncriptarContraseñaSoapIn" />
+      <wsdl:output message="tns:EncriptarContraseñaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarUsuario">
+      <wsdl:input message="tns:ConsultarUsuarioSoapIn" />
+      <wsdl:output message="tns:ConsultarUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ParametrosOffice365">
+      <wsdl:input message="tns:ParametrosOffice365SoapIn" />
+      <wsdl:output message="tns:ParametrosOffice365SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarUsuarios">
+      <wsdl:input message="tns:ListarUsuariosSoapIn" />
+      <wsdl:output message="tns:ListarUsuariosSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="User_WebServiceSoap" type="tns:User_WebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="EncriptarContraseña">
+      <soap:operation soapAction="http://tempuri.org/EncriptarContraseña" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarUsuario">
+      <soap:operation soapAction="http://tempuri.org/ConsultarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ParametrosOffice365">
+      <soap:operation soapAction="http://tempuri.org/ParametrosOffice365" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarUsuarios">
+      <soap:operation soapAction="http://tempuri.org/ListarUsuarios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="User_WebServiceSoap12" type="tns:User_WebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="EncriptarContraseña">
+      <soap12:operation soapAction="http://tempuri.org/EncriptarContraseña" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarUsuario">
+      <soap12:operation soapAction="http://tempuri.org/ConsultarUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ParametrosOffice365">
+      <soap12:operation soapAction="http://tempuri.org/ParametrosOffice365" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarUsuarios">
+      <soap12:operation soapAction="http://tempuri.org/ListarUsuarios" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="User_WebService">
+    <wsdl:port name="User_WebServiceSoap" binding="tns:User_WebServiceSoap">
+      <soap:address location="https://apps.landers.com.co/webapps/WebService/User_WebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="User_WebServiceSoap12" binding="tns:User_WebServiceSoap12">
+      <soap12:address location="https://apps.landers.com.co/webapps/WebService/User_WebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
